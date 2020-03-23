@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>shampoo</title>
+	<link rel="stylesheet" type="text/css" href="node_modules\bootstrap\dist\css\bootstrap.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">shampoo</a>
+  <button 
+  class="navbar-toggler" 
+  type="button" 
+  data-toggle="collapse" 
+  data-target="#navbarNavDropdown" 
+  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a id="home" class="nav-link active" onclick="showTab('home')">Home</a>
+      </li>
+      <li class="nav-item">
+        <a id="material" class="nav-link" onclick="showTab('material')">Material</a>
+      </li>
+      <li class="nav-item">
+        <a id="completed_exams" class="nav-link" onclick="showTab('completed_exams')">Completed Exams</a>
+      </li>
+      <li class="nav-item">
+        <a id="scheduale" class="nav-link" onclick="showTab('scheduale')" >Scheduale</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div id="home_content">Home</div>
+<div id="material_content">Material</div>
+<div id="completed_exams_content">Complited Exams</div>
+<div id="scheduale_content">Scheduale</div>
+
+
+<script src="node_modules\jquery\dist\jquery.slim.min.js"></script>
+<script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
+<script src="node_modules\bootstrap\dist\js\bootstrap.min.js"></script>
+<script src="functions.js"></script>
+</body>
+</html>
