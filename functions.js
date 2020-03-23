@@ -1,6 +1,11 @@
 const tab_ids = ['home', 'material', 'completed_exams', 'scheduale']
+hideAll()
 
-
+function hideAll() {
+    document.getElementsByClassName("navbar")[0].style.display = 'none'
+    document.getElementsByTagName("main")[0].style.display = 'none'
+    
+}
 function showTab(tab_id){
     tab_ids.forEach(id => {
         if (id == tab_id) {
