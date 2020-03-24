@@ -1,54 +1,81 @@
-const tab_ids = ['home', 'material', 'completed_exams', 'scheduale', 'sign_up']
+const tab_ids = ["home", "material", "completed_exams", "scheduale"];
 
-hideAll()
+startUpLogging();
 
-function hideAll() {
-    $("nav.navbar").hide();
-    $("main").hide()
-    $("#logging").show()
+function startUpLogging() {
+  hideSignUp();
+  hideMain();
+  hideNav();
+  showLogging();
 }
 
-function showAll() {
-    $("nav.navbar").show();
-    $("main").show()
-    $("#logging").hide()
-}
-
-function switchTab(tab_id) {
-    activateTabNav(tab_id)
-    showContent(tab_id)
-}
-function activateTabNav(tab_id){
-    tab_ids.forEach(id => {
-        if (id == tab_id) {
-            $("#"+id).addClass("active")
-        } else {
-            $("#"+id).removeClass("active")
-        }
-    });
-}
-
-function showContent(content_id) {
-    tab_ids.forEach(id => {
-        if (id == content_id) {
-            $("#"+id+"_content").show()
-        } else {
-            $("#"+id+"_content").hide()
-        }
-    });
-    
+function startUpSignUp() {
+  showSignUp();
+  hideMain();
+  hideNav();
+  hideLogging();
 }
 
 function signIn() {
-    console.log('1')
-    showAll()
-    switchTab('home')
+  showMain();
+  showNav();
+  hideLogging();
+  hideSignUp();
+  switchTab("home");
 }
 
-function moveToSignUp() {
-    console.log('1')
-    $("#logging").hide()
-    $("main").show()
-    showContent('sign_up')
-    $("#sign_up_content").show()
+function hideLogging() {
+  $("#logging").hide();
+}
+
+function showLogging() {
+  $("#logging").show();
+}
+
+function hideSignUp() {
+  $("#sign_up_content").hide();
+}
+
+function showSignUp() {
+  $("#sign_up_content").show();
+}
+
+function hideNav() {
+  $("nav.navbar").hide();
+}
+
+function showNav() {
+  $("nav.navbar").show();
+}
+
+function hideMain() {
+  $("main").hide();
+}
+
+function showMain() {
+  $("main").show();
+}
+
+function switchTab(tab_id) {
+  activateTabNav(tab_id);
+  showContent(tab_id);
+}
+function activateTabNav(tab_id) {
+  tab_ids.forEach(id => {
+    if (id == tab_id) {
+      $("#" + id).addClass("active");
+    } else {
+      $("#" + id).removeClass("active");
+    }
+  });
+}
+
+function showContent(content_id) {
+  tab_ids.forEach(id => {
+    if (id == content_id) {
+      $("#" + id + "_content").show();
+    } else {
+      $("#" + id + "_content").hide();
+    }
+  });
 }

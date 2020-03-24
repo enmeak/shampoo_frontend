@@ -27,7 +27,20 @@
     margin-top: 30px;
 }
 
+
+#login_form h5 {
+    word-spacing: 3px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
 #login_form a {
     margin-top: 20px;
     text-decoration: none;
+}
+
+#login_form select {
+    margin-bottom: 20px;
 }
