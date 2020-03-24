@@ -1,6 +1,16 @@
 const tab_ids = ["home", "material", "completed_exams", "scheduale"];
 
-startUpLogging();
+
+if (document.cookie == "login=true") {
+    showMain()
+    showNav()
+    switchTab("home")
+    hideSignUp()
+    hideLogging()
+} else {
+    startUpLogging();
+}
+
 
 function startUpLogging() {
   hideSignUp();
@@ -22,6 +32,7 @@ function signIn() {
   hideLogging();
   hideSignUp();
   switchTab("home");
+  document.cookie = "login=true"
 }
 
 function hideLogging() {

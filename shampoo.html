@@ -10,7 +10,7 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark default-color">
     <a class="navbar-brand" href="#">shampoo</a>
     <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,7 @@
 
       </ul>
 
-      <button class="btn btn-outline-primary btn-sm ml-auto">Sign Out</button>
+      <button class="btn btn-outline-white btn-sm ml-auto" onclick="startUpLogging()">Sign Out</button>
     </div>
 
   </nav>
@@ -51,7 +51,7 @@
         <div class="form-group">
           <input type="password" class="form-control" id="login_password" placeholder="Password">
         </div>
-        <button type="button" class="btn btn-primary btn-block" onclick="signIn()">Sign In</button>
+        <button type="button" class="btn btn-default btn-block" onclick="signIn()">Sign In</button>
         <small>New to Shampoo? 
           <a onclick="startUpSignUp()" href="javascript:void(0)">Register</a>
         </small>
