@@ -2,42 +2,66 @@
 <html>
 <head>
 	<title>shampoo</title>
-	<link rel="stylesheet" type="text/css" href="node_modules\bootstrap\dist\css\bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="node_modules\mdbootstrap\css\bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules\mdbootstrap\css\mdb.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-none">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">shampoo</a>
   <button 
-  class="navbar-toggler" 
+  class=" navbar-toggler" 
   type="button" 
   data-toggle="collapse" 
   data-target="#navbarNavDropdown" 
   aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  
+
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item ">
-        <a id="home" class="nav-link active" onclick="showTab('home')">Home</a>
+        <a id="home" class="nav-link active" onclick="switchTab('home')">Home</a>
       </li>
       <li class="nav-item">
-        <a id="material" class="nav-link" onclick="showTab('material')">Material</a>
+        <a id="material" class="nav-link" onclick="switchTab('material')">Material</a>
       </li>
       <li class="nav-item">
-        <a id="completed_exams" class="nav-link" onclick="showTab('completed_exams')">Completed Exams</a>
+        <a id="completed_exams" class="nav-link" onclick="switchTab('completed_exams')">Completed Exams</a>
       </li>
       <li class="nav-item">
-        <a id="scheduale" class="nav-link" onclick="showTab('scheduale')" >Scheduale</a>
+        <a id="scheduale" class="nav-link" onclick="switchTab('scheduale')" >Scheduale</a>
       </li>
+      
     </ul>
+
+    <button class="btn btn-outline-primary btn-sm ml-auto">Sign Out</button>
   </div>
+
 </nav>
 
-<div id="logging">sign up/ log in</div>
+<div id="logging">
+  <div id="login_form">
+    <form class="animated bounce">
+      <img src="images/soap.png" alt="logo" height="150" width="150">
+      <h4>Welcome to Shampoo!</h4>
+      <div class="form-group">
+        <input type="text" class="form-control" id="Login_Username" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="login_password" placeholder="Password">
+      </div>
+      <button type="button" class="btn btn-primary btn-block" onclick="signIn()">Sign In</button>
+      <a onclick="moveToSignUp()" href="javascript:void(0)"><small>Don't have an account yet? Register now</small></a>
+    </form>
+  </div>
+</div>
 
-<main class="d-none">
+
+<main>
+  <div id="sign_up_content">xcvxvxcvcxvcxxcv</div>
   <div id="home_content">Home</div>
   <div id="material_content">Material</div>
   <div id="completed_exams_content">Complited Exams</div>
@@ -47,9 +71,10 @@
 
 
 
-<script src="node_modules\jquery\dist\jquery.slim.min.js"></script>
-<script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
-<script src="node_modules\bootstrap\dist\js\bootstrap.min.js"></script>
+<script src="node_modules\mdbootstrap\js\jquery.min.js"></script>
+<script src="node_modules\mdbootstrap\js\popper.min.js"></script>
+<script src="node_modules\mdbootstrap\js\bootstrap.min.js"></script>
+<script src="node_modules\mdbootstrap\js\mdb.min.js"></script>
 <script src="functions.js"></script>
 </body>
 </html>

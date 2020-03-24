@@ -1,19 +1,54 @@
-const tab_ids = ['home', 'material', 'completed_exams', 'scheduale']
+const tab_ids = ['home', 'material', 'completed_exams', 'scheduale', 'sign_up']
+
 hideAll()
 
 function hideAll() {
-    document.getElementsByClassName("navbar")[0].style.display = 'none'
-    document.getElementsByTagName("main")[0].style.display = 'none'
-    
+    $("nav.navbar").hide();
+    $("main").hide()
+    $("#logging").show()
 }
-function showTab(tab_id){
+
+function showAll() {
+    $("nav.navbar").show();
+    $("main").show()
+    $("#logging").hide()
+}
+
+function switchTab(tab_id) {
+    activateTabNav(tab_id)
+    showContent(tab_id)
+}
+function activateTabNav(tab_id){
     tab_ids.forEach(id => {
         if (id == tab_id) {
-            document.getElementById(id+"_content").style.display = 'block'
-            document.getElementById(id).classList.add('active')
+            $("#"+id).addClass("active")
         } else {
-            document.getElementById(id+"_content").style.display = 'none'
-            document.getElementById(id).classList.remove('active')
+            $("#"+id).removeClass("active")
         }
     });
+}
+
+function showContent(content_id) {
+    tab_ids.forEach(id => {
+        if (id == content_id) {
+            $("#"+id+"_content").show()
+        } else {
+            $("#"+id+"_content").hide()
+        }
+    });
+    
+}
+
+function signIn() {
+    console.log('1')
+    showAll()
+    switchTab('home')
+}
+
+function moveToSignUp() {
+    console.log('1')
+    $("#logging").hide()
+    $("main").show()
+    showContent('sign_up')
+    $("#sign_up_content").show()
 }
