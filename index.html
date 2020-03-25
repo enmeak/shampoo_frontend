@@ -5,7 +5,7 @@
   <title>shampoo</title>
   <link rel="stylesheet" type="text/css" href="node_modules\mdbootstrap\css\bootstrap.min.css">
   <link rel="stylesheet" href="node_modules\mdbootstrap\css\mdb.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="src\style.css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
           <a id="home" class="nav-link active" onclick="switchTab('home')">Home</a>
         </li>
         <li class="nav-item">
-          <a id="material" class="nav-link" onclick="switchTab('material')">Material</a>
+          <a id="material" class="nav-link" onclick="switchTab('material'); openNav()">Material</a>
         </li>
         <li class="nav-item">
           <a id="completed_exams" class="nav-link" onclick="switchTab('completed_exams')">Completed Exams</a>
@@ -35,7 +35,7 @@
 
       </ul>
 
-      <button class="btn btn-outline-white btn-sm ml-auto" onclick="startUpLogging()">Sign Out</button>
+      <button class="btn btn-outline-white btn-sm ml-auto" onclick="signOut()">Sign Out</button>
     </div>
 
   </nav>
@@ -43,7 +43,7 @@
   <div id="logging">
     <div id="login_form">
       <form class="animated bounce">
-        <img src="images/soap.png" alt="logo" height="150" width="150">
+        <img src="src/images/soap.png" alt="logo" height="150" width="150">
         <h4>Welcome to Shampoo!</h4>
         <div class="form-group">
           <input type="text" class="form-control" id="Login_Username" placeholder="Username">
@@ -52,7 +52,7 @@
           <input type="password" class="form-control" id="login_password" placeholder="Password">
         </div>
         <button type="button" class="btn btn-default btn-block" onclick="signIn()">Sign In</button>
-        <small>New to Shampoo? 
+        <small>New to Shampoo?
           <a onclick="startUpSignUp()" href="javascript:void(0)">Register</a>
         </small>
       </form>
@@ -66,7 +66,7 @@
           <div class="col">
             <h5>Create a Shampoo Account!</h5>
           </div>
-          <div class="col"><img src="images/soap_bright.png" alt="logo" height="130" width="130"></div>
+          <div class="col"><img src="src/images/soap_bright.png" alt="logo" height="130" width="130"></div>
         </div>
         <div class="form-group">
           <input type="text" class="form-control" id="Login_Username" placeholder="Choose Username">
@@ -85,20 +85,34 @@
           <option value="4">Tashlat Mivzai</option>
         </select>
         <button type="button" class="btn btn-primary btn-block" onclick="signIn()">Sign Up</button>
-        <small>Already registered? 
-          <a onclick="startUpLogging()" href="javascript:void(0)">signIn</a>
+        <small>Already registered?
+          <a onclick="startUpLogging()" href="javascript:void(0)">Sign In</a>
         </small>
-
       </form>
     </div>
   </div>
 
   <main>
     <div id="home_content">Home</div>
-    <div id="material_content">Material</div>
+    <div id="material_content">
+      <div id="mySidenav" class="sidenav">
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+      <div id="main">
+        <p>
+          naama is always right in her mind. 
+        </p>
+      </div>
+    </div>
     <div id="completed_exams_content">Complited Exams</div>
     <div id="scheduale_content">Scheduale</div>
   </main>
+
 
 
 
@@ -107,7 +121,7 @@
   <script src="node_modules\mdbootstrap\js\popper.min.js"></script>
   <script src="node_modules\mdbootstrap\js\bootstrap.min.js"></script>
   <script src="node_modules\mdbootstrap\js\mdb.min.js"></script>
-  <script src="functions.js"></script>
+  <script src="src\functions.js"></script>
 </body>
 
 </html>
