@@ -27,6 +27,14 @@ function startUpSignUp() {
 }
 
 function signIn() {
+
+  const user_name = $("#Login_Username")
+  const password = $("#login_password")
+  const url = `localhost:5000/users/signIn/${user_name}/${password}`
+  
+  $.get(url, function (data, status) {
+    console.log(data, status)
+  })
   showMain();
   showNav();
   hideLogging();
@@ -34,6 +42,8 @@ function signIn() {
   switchTab("home");
 
   document.cookie = "login=true"
+
+
 }
 
 function signOut() {
