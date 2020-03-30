@@ -69,13 +69,13 @@
           <div class="col"><img src="src/images/soap_bright.png" alt="logo" height="130" width="130"></div>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" id="Login_Username" placeholder="Choose Username">
+          <input type="text" class="form-control" id="sign_up_Username" placeholder="Choose Username">
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" id="login_password" placeholder="Choose Password">
+          <input type="password" class="form-control" id="sign_up_password" placeholder="Choose Password">
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" id="login_password" placeholder="Confirm Password">
+          <input type="password" class="form-control" id="confirm_sign_up_password" placeholder="Confirm Password">
         </div>
         <select class="browser-default custom-select">
           <option selected>Choose Team</option>
@@ -95,17 +95,26 @@
   <main>
     <div id="home_content">Home</div>
     <div id="material_content">
-      <div id="mySidenav" class="sidenav">
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+      <div id = "mySidenav" class="sidenav">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#clients">Clients</a>
+        <a href="#contact">Contact</a>
+        <button class="dropdown-btn">Dropdown
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+        <a href="#contact">Search</a>
       </div>
 
       <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-      <div id="main">
+      <div id="pdf">
         <p>
-          naama is always right in her mind. 
+          <embed style="padding: 0;" src="src/documents/merkaz_zayad/linux/New Microsoft Word Document.pdf" type="application/pdf" width="100%" height="600px" /> 
         </p>
       </div>
     </div>
