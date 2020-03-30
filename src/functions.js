@@ -1,16 +1,14 @@
 const tab_ids = ["home", "material", "completed_exams", "scheduale"];
 
-
 if (document.cookie == "login=true") {
-    showMain()
-    showNav()
-    switchTab("home")
-    hideSignUp()
-    hideLogging()
+  showMain();
+  showNav();
+  switchTab("home");
+  hideSignUp();
+  hideLogging();
 } else {
-    startUpLogging();
+  startUpLogging();
 }
-
 
 function startUpLogging() {
   hideSignUp();
@@ -27,29 +25,29 @@ function startUpSignUp() {
 }
 
 function signIn() {
+  console.log("hey");
+  const user_name = $("#Login_Username").val();
+  const password = $("#login_password").val();
 
-  const user_name = $("#Login_Username")
-  const password = $("#login_password")
-  const url = `localhost:5000/users/signIn/${user_name}/${password}`
-  
-  $.get(url, function (data, status) {
-    console.log(data, status)
-  })
-  showMain();
-  showNav();
-  hideLogging();
-  hideSignUp();
-  switchTab("home");
+  console.log(user_name, password);
+  const url = `http://localhost:5000/users/signIn/${user_name}/${password}`;
 
-  document.cookie = "login=true"
+  $.get(url, function(data, status) {
+    if (data == true) {
+      showMain();
+      showNav();
+      hideLogging();
+      hideSignUp();
+      switchTab("home");
 
-
+      document.cookie = "login=true";
+    } else $("#error_login").style.display = "block";
+  });
 }
 
 function signOut() {
-  startUpLogging()
-  document.cookie = "login=false"
-
+  startUpLogging();
+  document.cookie = "login=false";
 }
 
 function hideLogging() {
@@ -108,8 +106,6 @@ function showContent(content_id) {
   });
 }
 
-
-
 /* Set the width of the side navigation to 250px */
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
@@ -135,4 +131,3 @@ for (i = 0; i < dropdown.length; i++) {
     }
   });
 }
-
