@@ -43,17 +43,17 @@
 
   <div id="logging">
     <div id="login_form">
-      <form class="animated bounce">
+      <form class="animated bounce" onsubmit="return false">
         <img src="src/images/soap.png" alt="logo" height="150" width="150">
         <h4>Welcome to Shampoo!</h4>
+        <small id="error_login">Username or Password Incorrect</small>
         <div class="form-group">
-          <input type="text" class="form-control" id="Login_Username" placeholder="Username">
+          <input type="text" class="form-control" id="Login_Username" placeholder="Username" required>
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" id="login_password" placeholder="Password">
+          <input type="password" class="form-control" id="login_password" placeholder="Password" required>
         </div>
-        <small id="error_login" style="color: red; display: none;">username or password incorrect</small>
-        <button type="button" class="btn btn-default btn-block" onclick="signIn()">Sign In</button>
+        <button type="submit" class="btn btn-default btn-block" onclick="signIn()">Sign In</button>
         <small>New to Shampoo?
           <a onclick="startUpSignUp()" href="javascript:void(0)">Register</a>
         </small>
@@ -63,7 +63,7 @@
 
   <div id="sign_up_content">
     <div id="login_form">
-      <form>
+      <form onsubmit="return false">
         <div class="row">
           <div class="col">
             <h5>Create a Shampoo Account!</h5>
@@ -71,22 +71,23 @@
           <div class="col"><img src="src/images/soap_bright.png" alt="logo" height="130" width="130"></div>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" id="sign_up_Username" placeholder="Choose Username">
+          <input type="text" class="form-control" id="sign_up_Username" placeholder="Choose Username" required>
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" id="sign_up_password" placeholder="Choose Password">
+          <input type="password" class="form-control" id="sign_up_password" placeholder="Choose Password" required>
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" id="confirm_sign_up_password" placeholder="Confirm Password">
+          <input type="password" class="form-control" id="confirm_sign_up_password" placeholder="Confirm Password"
+            required>
         </div>
-        <select class="browser-default custom-select">
-          <option selected>Choose Team</option>
+        <select class="browser-default custom-select" id="sign_up_team" required>
+          <option value="">Choose Team</option>
           <option value="1">Merkaz Zayad</option>
           <option value="2">Tashlat Zayad</option>
           <option value="3">Merkaz Mivzai</option>
           <option value="4">Tashlat Mivzai</option>
         </select>
-        <button type="button" class="btn btn-primary btn-block" onclick="signIn()">Sign Up</button>
+        <button type="submit" class="btn btn-primary btn-block" onclick="signUp()">Sign Up</button>
         <small>Already registered?
           <a onclick="startUpLogging()" href="javascript:void(0)">Sign In</a>
         </small>
@@ -97,7 +98,7 @@
   <main>
     <div id="home_content">Home</div>
     <div id="material_content">
-      <div id = "mySidenav" class="sidenav">
+      <div id="mySidenav" class="sidenav">
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#clients">Clients</a>
@@ -116,7 +117,8 @@
       <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
       <div id="pdf">
         <p>
-          <embed style="padding: 0;" src="src/documents/merkaz_zayad/linux/New Microsoft Word Document.pdf" type="application/pdf" width="100%" height="600px" /> 
+          <embed style="padding: 0;" src="src/documents/merkaz_zayad/linux/New Microsoft Word Document.pdf"
+            type="application/pdf" width="100%" height="600px" />
         </p>
       </div>
     </div>

@@ -25,11 +25,9 @@ function startUpSignUp() {
 }
 
 function signIn() {
-  console.log("hey");
   const user_name = $("#Login_Username").val();
   const password = $("#login_password").val();
 
-  console.log(user_name, password);
   const url = `http://localhost:5000/users/signIn/${user_name}/${password}`;
 
   $.get(url, function(data, status) {
@@ -39,10 +37,23 @@ function signIn() {
       hideLogging();
       hideSignUp();
       switchTab("home");
+      $("#error_login").hide();
 
       document.cookie = "login=true";
-    } else $("#error_login").style.display = "block";
+    } else $("#error_login").show();
   });
+}
+
+function signUp() {
+  const user_name = $("#sign_up_Username").val();
+  const password = $("#sign_up_password").val();
+  const confirm_password = $("#confirm_sign_up_password").val();
+  const team = $("#sign_up_team").val();
+  console.log(user_name, password, confirm_password, team)
+
+  const url = `http://localhost:5000/users/signUp/${user_name}/${password}/${team}`;
+
+  $.get(url)
 }
 
 function signOut() {
