@@ -49,7 +49,7 @@ body {
     margin-bottom: 20px;
 }
 
-#login_form #error_login {
+#login_form #error_login, #error_signup {
   color: red;
   display: none;
 }

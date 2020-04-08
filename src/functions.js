@@ -1,5 +1,12 @@
 const tab_ids = ["home", "material", "completed_exams", "scheduale"];
 
+$("#confirm_sign_up_password").on("focusout", function() {
+  if ($("#sign_up_password").val() == $("#confirm_sign_up_password").val()) {
+    $("#error_signup").hide();
+  } else
+    $("#error_signup").show();
+});
+
 if (document.cookie == "login=true") {
   showMain();
   showNav();
@@ -49,11 +56,13 @@ function signUp() {
   const password = $("#sign_up_password").val();
   const confirm_password = $("#confirm_sign_up_password").val();
   const team = $("#sign_up_team").val();
-  console.log(user_name, password, confirm_password, team)
-
   const url = `http://localhost:5000/users/signUp/${user_name}/${password}/${team}`;
-
-  $.get(url)
+  const regexp = new RegExp("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")
+  console.log(user_name, password, confirm_password, team, regexp.test(password) );
+  if (password == confirm_password && regexp.test(password)) {
+    $.get(url);
+    startUpLogging();
+  }
 }
 
 function signOut() {
