@@ -1,12 +1,14 @@
+// all tabs options
 const tab_ids = ["home", "material", "completed_exams", "scheduale"];
 
+// validate password match at signup
 $("#confirm_sign_up_password").on("focusout", function() {
   if ($("#sign_up_password").val() == $("#confirm_sign_up_password").val()) {
     $("#error_signup").hide();
-  } else
-    $("#error_signup").show();
+  } else $("#error_signup").show();
 });
 
+// cookies
 if (document.cookie == "login=true") {
   showMain();
   showNav();
@@ -17,6 +19,7 @@ if (document.cookie == "login=true") {
   startUpLogging();
 }
 
+// startup log in page
 function startUpLogging() {
   hideSignUp();
   hideMain();
@@ -24,6 +27,7 @@ function startUpLogging() {
   showLogging();
 }
 
+// startup sign up page
 function startUpSignUp() {
   showSignUp();
   hideMain();
@@ -31,6 +35,7 @@ function startUpSignUp() {
   hideLogging();
 }
 
+// sign in function
 function signIn() {
   const user_name = $("#Login_Username").val();
   const password = $("#login_password").val();
@@ -51,61 +56,80 @@ function signIn() {
   });
 }
 
+// sign up function
 function signUp() {
   const user_name = $("#sign_up_Username").val();
   const password = $("#sign_up_password").val();
   const confirm_password = $("#confirm_sign_up_password").val();
   const team = $("#sign_up_team").val();
   const url = `http://localhost:5000/users/signUp/${user_name}/${password}/${team}`;
-  const regexp = new RegExp("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")
-  console.log(user_name, password, confirm_password, team, regexp.test(password) );
+  const regexp = new RegExp("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}");
+  console.log(
+    user_name,
+    password,
+    confirm_password,
+    team,
+    regexp.test(password)
+  );
   if (password == confirm_password && regexp.test(password)) {
     $.get(url);
     startUpLogging();
   }
 }
 
+// sign out function
 function signOut() {
   startUpLogging();
   document.cookie = "login=false";
 }
 
+// hide log in pagge
 function hideLogging() {
   $("#logging").hide();
 }
 
+// show log in form
 function showLogging() {
   $("#logging").show();
 }
 
+// hide sign up form
 function hideSignUp() {
   $("#sign_up_content").hide();
 }
 
+// show sign up form
 function showSignUp() {
   $("#sign_up_content").show();
 }
 
+// hide navbar
 function hideNav() {
   $("nav.navbar").hide();
 }
 
+// show navbar
 function showNav() {
   $("nav.navbar").show();
 }
 
+// hide main content
 function hideMain() {
   $("main").hide();
 }
 
+// show main content
 function showMain() {
   $("main").show();
 }
 
+// function to switch tab
 function switchTab(tab_id) {
   activateTabNav(tab_id);
   showContent(tab_id);
 }
+
+// function to highlight chosen tab
 function activateTabNav(tab_id) {
   tab_ids.forEach(id => {
     if (id == tab_id) {
@@ -116,6 +140,7 @@ function activateTabNav(tab_id) {
   });
 }
 
+// function to show chosen content according to chosen tab
 function showContent(content_id) {
   tab_ids.forEach(id => {
     if (id == content_id) {
