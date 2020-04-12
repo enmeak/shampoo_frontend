@@ -3,53 +3,57 @@ body {
 }
 
 .nav-link:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .navbar {
-    z-index: 2;
+  z-index: 2;
 }
 
-#login_form {
-    background-size: 100%;
-    min-width: 300px;
-    max-width: 300px;
-    width: 300px; 
-    position: absolute;
-    top:  50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+#sign_in_form,
+#sign_up_form {
+  background-size: 100%;
+  min-width: 300px;
+  max-width: 300px;
+  width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
-#login_form h4 {
-    word-spacing: 3px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
-    margin-top: 30px;
+#sign_in_form h4,
+#sign_up_form h4 {
+  word-spacing: 3px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 30px;
 }
 
-
-#login_form h5 {
-    word-spacing: 3px;
-    font-weight: bold;
-    text-align: left;
-    font-size: 1.8em;
-    margin-bottom: 30px;
-    margin-top: 30px;
+#sign_in_form h5,
+#sign_up_form h5 {
+  word-spacing: 3px;
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.8em;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
-#login_form a {
-    margin-top: 20px;
-    text-decoration: none;
+#sign_in_form a,
+#sign_up_form a {
+  margin-top: 20px;
+  text-decoration: none;
 }
 
-#login_form select {
-    margin-bottom: 20px;
+#sign_up_form select {
+  margin-bottom: 20px;
 }
 
-#login_form #error_login, #error_signup {
+#sign_in_form #error_login,
+#sign_up_form #error_signup {
   color: red;
   display: none;
 }
@@ -68,7 +72,8 @@ body {
 }
 
 /* Style the sidenav links and the dropdown button */
-.sidenav a, .dropdown-btn {
+.sidenav a,
+.dropdown-btn {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
@@ -76,14 +81,15 @@ body {
   display: block;
   border: none;
   background: none;
-  width:100%;
+  width: 100%;
   text-align: left;
   cursor: pointer;
   outline: none;
 }
 
 /* On mouse-over */
-.sidenav a:hover, .dropdown-btn:hover {
+.sidenav a:hover,
+.dropdown-btn:hover {
   color: #f1f1f1;
 }
 
@@ -122,6 +128,10 @@ body {
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }

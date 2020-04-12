@@ -85,22 +85,22 @@ function signOut() {
 
 // hide log in pagge
 function hideLogging() {
-  $("#logging").hide();
+  $("#sign_in").hide();
 }
 
 // show log in form
 function showLogging() {
-  $("#logging").show();
+  $("#sign_in").show();
 }
 
 // hide sign up form
 function hideSignUp() {
-  $("#sign_up_content").hide();
+  $("#sign_up").hide();
 }
 
 // show sign up form
 function showSignUp() {
-  $("#sign_up_content").show();
+  $("#sign_up").show();
 }
 
 // hide navbar
