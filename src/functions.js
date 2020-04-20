@@ -176,3 +176,18 @@ for (i = 0; i < dropdown.length; i++) {
     }
   });
 }
+
+
+// load documents
+$(document).ready(function(){
+  $("#linux").click(function(){
+      $("#pdf").load("/src/material.html", function(responseTxt, statusTxt, jqXHR){
+          if(statusTxt == "success"){
+              console.log("New content loaded successfully!");
+          }
+          if(statusTxt == "error"){
+              console.log("Error: " + jqXHR.status + " " + jqXHR.statusText);
+          }
+      });
+  });
+});
