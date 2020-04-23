@@ -179,16 +179,5 @@ for (i = 0; i < dropdown.length; i++) {
 
 // load documents
 function loadPdf(id) {
-  $("#pdf").load(`/src/material.html #${id}`, function (
-    responseTxt,
-    statusTxt,
-    jqXHR
-  ) {
-    if (statusTxt == "success") {
-      console.log("New content loaded successfully!");
-    }
-    if (statusTxt == "error") {
-      console.log("Error: " + jqXHR.status + " " + jqXHR.statusText);
-    }
-  });
+  $("#pdf").load(`/src/material.html #${id}`)
 }

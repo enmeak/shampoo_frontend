@@ -83,7 +83,7 @@
           <a id="home" class="nav-link active" onclick="switchTab('home')">Home</a>
         </li>
         <li class="nav-item">
-          <a id="material" class="nav-link" onclick="switchTab('material'); openNav()">Material</a>
+          <a id="material" class="nav-link" onclick="switchTab('material'); openNav()">Textbooks</a>
         </li>
         <li class="nav-item">
           <a id="completed_exams" class="nav-link" onclick="switchTab('completed_exams')">Completed Exams</a>
@@ -102,23 +102,7 @@
   <main>
     <div id="home_content">Home</div>
     <div id="material_content">
-      <div id="mySidenav" class="sidenav">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#clients">Clients</a>
-        <a href="#contact">Contact</a>
-        <button class="dropdown-btn">Dropdown
-          <i class="fa fa-caret-down fa-lg"></i>
-        </button>
-        <div class="dropdown-container">
-          <a id="linux" href="#" onclick="loadPdf('linux')">linux</a>
-          <a id="windows" href="#" onclick="loadPdf('windows')">windows</a>
-          <a href="#">Link 3</a>
-        </div>
-        <a href="#contact">Search</a>
-      </div>
-
-      <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+      <div id="mySidenav" class="sidenav"></div>
       <div id="pdf"></div>
     </div>
     <div id="completed_exams_content">Complited Exams</div>
@@ -134,7 +118,12 @@
   <script src="node_modules\mdbootstrap\js\bootstrap.min.js"></script>
   <script src="node_modules\mdbootstrap\js\mdb.min.js"></script>
   <script src="node_modules\@fortawesome\fontawesome-free\js\all.min.js"></script>
+  <script src="src\file_hierarchy.js"></script>
   <script src="src\functions.js"></script>
+  <script src="src\build_sidenav.js"></script>
+
+
+
 </body>
 
 </html>

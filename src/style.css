@@ -68,16 +68,14 @@ body {
   left: 0;
   background-color: #111;
   overflow-x: hidden;
-  padding-top: 60px;
+  padding-top: 80px;
 }
 
 /* Style the sidenav links and the dropdown button */
-.sidenav a,
-.dropdown-btn {
-  padding: 6px 8px 6px 16px;
+.sidenav li {
   text-decoration: none;
-  font-size: 20px;
-  color: #818181;
+  font-size: 18px;
+  color: #2bbbad;
   display: block;
   border: none;
   background: none;
@@ -88,9 +86,8 @@ body {
 }
 
 /* On mouse-over */
-.sidenav a:hover,
-.dropdown-btn:hover {
-  color: #f1f1f1;
+.sidenav li:hover {
+  color: #b4e9e4;
 }
 
 /* Main content */
@@ -100,11 +97,12 @@ body {
   padding: 0px 10px;
 }
 
-/* Add an active class to the active dropdown button */
-#mySidenav .active {
-  background-color: rgb(71, 78, 71);
-  color: white;
+li, ul {
+  text-decoration: none;
+  cursor:pointer;
+  list-style-type: none;
 }
+.hide {display:none;}
 
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
