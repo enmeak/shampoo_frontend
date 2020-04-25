@@ -1,5 +1,5 @@
 function setDisplay(collapsed, item) {
-  collapsed ? (item.className = "hide") : (item.className = "");
+  (collapsed == "true") ? (item.className = "hide") : (item.className = "");
 }
 
 const icon = document.createElement("i")
@@ -28,9 +28,9 @@ function displayData(data, el) {
       {
         var child = e.target.children[0];
         if (child && child.classList.value == "hide") {
-          setDisplay(false, child);
+          setDisplay("false", child);
         } else {
-          setDisplay(true, child);
+          setDisplay("true", child);
         }
         e.stopPropagation();
       }
