@@ -1,30 +1,36 @@
+""" build_ config.py script, builds fily_hierarchy.js and material.html """
 import os
 import sys
 from yattag import Doc
-import json
 
 
 
-def path_to_dict(path):
-    d = {'value': os.path.basename(path).replace('.pdf', '')}
-    d['collapsed'] = 'true'
+def file_hierarchy(path):
+    """ get a starting path and returns the file hierarchy under that path as a dictionary """
+
+    document = {'value': os.path.basename(path).replace('.pdf', '')}
+    document['collapsed'] = 'true'
     if os.path.isdir(path):
-        d['children'] = [path_to_dict(os.path.join(path,x)) for x in os.listdir(path)]
+        document['children'] = [file_hierarchy(os.path.join(path, x)) for x in os.listdir(path)]
     else:
-        d['children'] = []
+        document['children'] = []
 
-    return d
+    return document
 
 def list_files(startpath):
+    """ get a starting path, returns all the files under that path in html format """
+
+    doc, _, _ = Doc().tagtext()
     rootdir = sys.argv[0]
     rootdir = str(rootdir).replace('builld_config.py', 'documents/')
-    for root, dirs, files in os.walk(startpath):
-        for f in files:
-            rel_dir = os.path.relpath(f, rootdir)
+    for root, _, files in os.walk(startpath):
+        for file in files:
+            rel_dir = os.path.relpath(root, rootdir)
             rel_dir = '/src/documents/' + rel_dir
-            doc.stag('embed', style="padding: 0;", id=f.replace('.pdf', '').replace(' ', '_'),
-                src=rel_dir.replace('\\', '/'), type="application/pdf", width="100%", height="600px")
-            print(doc.getvalue())
+            doc.stag('embed', style="padding: 0;", id=file.replace('.pdf', '').replace(' ', '_'),
+                     src=rel_dir.replace('\\', '/')+'/'+file,
+                     type="application/pdf", width="100%", height="600px")
+    return doc.getvalue()
 
 
 
@@ -32,21 +38,18 @@ def list_files(startpath):
 
 
 if __name__ == '__main__':
-    doc, tag, text = Doc().tagtext()
+
+
     material = './material.html'
-    file_hierarchy = './file_hierarchy.js'
-    f = path_to_dict('./documents/')
-    for i in range(len(f['children'])):
-        f['children'][i]['collapsed'] = "false"
+    file_hierarchy_path = './file_hierarchy.js'
+    hierarchy_result = file_hierarchy('./documents/')
+    for i in range(len(hierarchy_result['children'])):
+        hierarchy_result['children'][i]['collapsed'] = "false"
 
-    with open(file_hierarchy, 'w') as filetowrite:
-         filetowrite.write('let data = '+str(f['children']))
+    with open(file_hierarchy_path, 'w') as filetowrite:
+        filetowrite.write('let data = '+str(hierarchy_result['children']))
 
-    list_files('./documents/')
-    # with open(material, 'w') as filetowrite:
-    #      filetowrite.write(m)
-    #
-    # rel_dir = os.path.relpath(path, rootdir)
-    # rel_dir = '/src/documents/' + rel_dir
-    # doc.stag('embed', style="padding: 0;", id=os.path.basename(path).replace('.pdf', '').replace(' ', '_'),
-    #          src=rel_dir.replace('\\', '/'), type="application/pdf", width="100%", height="600px")
+
+    content = list_files('./documents/')
+    with open(material, 'w') as filetowrite:
+        filetowrite.write(content)
