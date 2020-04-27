@@ -2,8 +2,8 @@ function setDisplay(collapsed, item) {
   (collapsed == "true") ? (item.className = "hide") : (item.className = "");
 }
 
-const icon = document.createElement("i")
-icon.classList.add("fas","fa-caret-down")
+// const icon = document.createElement("i")
+// icon.classList.add("fas","fa-caret-down")
 
 function displayData(data, el) {
   var par = document.createElement("ul")
@@ -13,7 +13,13 @@ function displayData(data, el) {
 
     var li = par.appendChild(item);
 
-    item.innerHTML = (data[i].value).replace('_', ' ')
+    // item.innerHTML = (data[i].value).replace('_', ' ')
+    item.classList.add(data[i].type)
+    if (data[i].type == "file") {
+      item.innerHTML = ('<i class="far fa-file-pdf"></i> '+(data[i].value).replace('_', ' '))
+    } else {
+      item.innerHTML = ('<i class="far fa-folder"></i> '+(data[i].value).replace('_', ' '))
+    }
 
     //set initial display from data
     setDisplay(data[i].collapsed, item.parentNode);
@@ -27,6 +33,7 @@ function displayData(data, el) {
       else
       {
         var child = e.target.children[0];
+        console.log(child.classList.value)
         if (child && child.classList.value == "hide") {
           setDisplay("false", child);
         } else {

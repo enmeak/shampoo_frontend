@@ -72,7 +72,7 @@ body {
 }
 
 /* Style the sidenav links and the dropdown button */
-.sidenav li {
+.folder {
   text-decoration: none;
   font-size: 18px;
   color: #2bbbad;
@@ -104,6 +104,9 @@ li, ul {
 }
 .hide {display:none;}
 
+.file {
+  color: chocolate;
+}
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
   display: none;

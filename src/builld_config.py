@@ -11,9 +11,12 @@ def file_hierarchy(path):
     document = {'value': os.path.basename(path).replace('.pdf', '')}
     document['collapsed'] = 'true'
     if os.path.isdir(path):
+        document['type'] = 'folder'
         document['children'] = [file_hierarchy(os.path.join(path, x)) for x in os.listdir(path)]
     else:
+        document['type'] = 'file'
         document['children'] = []
+
 
     return document
 
