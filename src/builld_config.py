@@ -3,7 +3,8 @@ import os
 import sys
 from yattag import Doc
 
-
+# TODO: scan only pdf
+# TODO: take care of folders and files with spaces
 
 def file_hierarchy(path):
     """ get a starting path and returns the file hierarchy under that path as a dictionary """

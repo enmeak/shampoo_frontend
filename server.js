@@ -1,3 +1,4 @@
+var fa = require("fontawesome");
 const express = require("express")
 const app = express()
 

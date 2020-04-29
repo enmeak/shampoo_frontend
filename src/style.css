@@ -84,10 +84,9 @@ body {
   cursor: pointer;
   outline: none;
 }
-
 /* On mouse-over */
-.sidenav li:hover {
-  color: #b4e9e4;
+.sidenav .folder:hover {
+  color: #6edbd0;
 }
 
 /* Main content */
@@ -107,6 +106,12 @@ li, ul {
 .file {
   color: chocolate;
 }
+
+/* On mouse-over */
+.sidenav .file:hover {
+  color: rgb(240, 170, 121);
+}
+
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
   display: none;
