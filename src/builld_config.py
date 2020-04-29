@@ -3,18 +3,19 @@ import os
 import sys
 from yattag import Doc
 
-# TODO: scan only pdf
-# TODO: take care of folders and files with spaces
 
 def file_hierarchy(path):
-    """ get a starting path and returns the file hierarchy under that path as a dictionary """
+    """ get a starting path and returns the file hierarchy under that path as a dictionary.
+        only folders and pdf files are included"""
 
-    document = {'value': os.path.basename(path).replace('.pdf', '')}
-    document['collapsed'] = 'true'
+
+    document = {'collapsed': 'true'}
     if os.path.isdir(path):
+        document['value'] = os.path.basename(path)
         document['type'] = 'folder'
         document['children'] = [file_hierarchy(os.path.join(path, x)) for x in os.listdir(path)]
-    else:
+    elif os.path.basename(path).endswith('.pdf'):
+        document['value'] = os.path.basename(path).replace('.pdf', '').replace(' ', '_').lower()
         document['type'] = 'file'
         document['children'] = []
 
@@ -22,23 +23,20 @@ def file_hierarchy(path):
     return document
 
 def list_files(startpath):
-    """ get a starting path, returns all the files under that path in html format """
+    """ get a starting path, returns all the pdf files under that path in html format """
 
     doc, _, _ = Doc().tagtext()
     rootdir = sys.argv[0]
     rootdir = str(rootdir).replace('builld_config.py', 'documents/')
     for root, _, files in os.walk(startpath):
         for file in files:
-            rel_dir = os.path.relpath(root, rootdir)
-            rel_dir = '/src/documents/' + rel_dir
-            doc.stag('embed', style="padding: 0;", id=file.replace('.pdf', '').replace(' ', '_'),
-                     src=rel_dir.replace('\\', '/')+'/'+file,
-                     type="application/pdf", width="100%", height="600px")
+            if file.endswith('.pdf'):
+                rel_dir = os.path.relpath(root, rootdir)
+                rel_dir = '/src/documents/' + rel_dir
+                doc.stag('embed', style="padding: 0;", id=file.replace('.pdf', '').replace(' ', '_').lower(),
+                         src=rel_dir.replace('\\', '/')+'/'+file,
+                         type="application/pdf", width="100%", height="600px")
     return doc.getvalue()
-
-
-
-
 
 
 if __name__ == '__main__':
