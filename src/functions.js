@@ -1,5 +1,5 @@
 // all tabs options
-const tab_ids = ["home", "material", "completed_exams", "scheduale"];
+const tab_ids = ["home", "material", "exams", "scheduale"];
 
 // validate password match at signup
 $("#confirm_sign_up_password").on("focusout", function () {

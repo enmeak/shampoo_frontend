@@ -7,9 +7,8 @@ from yattag import Doc
 def file_hierarchy(path):
     """ get a starting path and returns the file hierarchy under that path as a dictionary.
         only folders and pdf files are included"""
-
-
     document = {'collapsed': 'true'}
+
     if os.path.isdir(path):
         document['value'] = os.path.basename(path)
         document['type'] = 'folder'
@@ -19,7 +18,8 @@ def file_hierarchy(path):
         document['type'] = 'file'
         document['children'] = []
 
-
+    if document == {'collapsed': 'true'}:
+        document['value'] = 'ignore'
     return document
 
 def list_files(startpath):
@@ -33,7 +33,8 @@ def list_files(startpath):
             if file.endswith('.pdf'):
                 rel_dir = os.path.relpath(root, rootdir)
                 rel_dir = '/src/documents/' + rel_dir
-                doc.stag('embed', style="padding: 0;", id=file.replace('.pdf', '').replace(' ', '_').lower(),
+                doc.stag('embed', style="padding: 0;",
+                         id=file.replace('.pdf', '').replace(' ', '_').lower(),
                          src=rel_dir.replace('\\', '/')+'/'+file,
                          type="application/pdf", width="100%", height="600px")
     return doc.getvalue()
@@ -49,7 +50,7 @@ if __name__ == '__main__':
         hierarchy_result['children'][i]['collapsed'] = "false"
 
     with open(file_hierarchy_path, 'w') as filetowrite:
-        filetowrite.write('let data = '+str(hierarchy_result['children']))
+        filetowrite.write('let hierarchy = '+str(hierarchy_result['children']))
 
 
     content = list_files('./documents/')
