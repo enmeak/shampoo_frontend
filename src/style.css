@@ -141,3 +141,22 @@ li, ul {
     font-size: 18px;
   }
 }
+
+/* Exam cards style */
+
+.col-lg-3 {
+  padding: 10px;
+}
+
+.card {
+  cursor: pointer;
+}
+.container {
+  padding-top: 10px;
+}
+
+#add_exam_button {
+  bottom: 10px;
+  left: 10px;
+  position: fixed;
+}

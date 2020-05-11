@@ -36,7 +36,8 @@
       <form onsubmit="return false">
         <div class="row">
           <div class="col">
-            <h5 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Create a Shampoo Account!</h5>
+            <h5 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Create a Shampoo
+              Account!</h5>
           </div>
           <div class="col"><img src="src/images/soap_bright.png" alt="logo" height="130" width="130"></div>
         </div>
@@ -69,8 +70,9 @@
     </div>
   </div>
 
-  <nav class="navbar navbar-expand-lg navbar-dark default-color" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-    <a class="navbar-brand" href="#"><i class="fas fa-pump-soap"></i> SHAMPOO</a>
+  <nav class="navbar navbar-expand-lg navbar-dark default-color"
+    style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+    <a class="navbar-brand" href="#"> SHAMPOO</a>
     <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -83,18 +85,21 @@
           <a id="home" class="nav-link active" onclick="switchTab('home')"><i class="fas fa-home"></i> Home </a>
         </li>
         <li class="nav-item">
-          <a id="material" class="nav-link" onclick="switchTab('material'); openNav()"><i class="fas fa-book"></i> Textbooks</a>
+          <a id="material" class="nav-link" onclick="switchTab('material'); openNav()"><i class="fas fa-book"></i>
+            Textbooks</a>
         </li>
         <li class="nav-item">
-          <a id="exams" class="nav-link" onclick="switchTab('exams')"><i class="fas fa-scroll"></i> Exams</a>
+          <a id="exams" class="nav-link" onclick="switchTab('exams'); displayExams()"><i class="fas fa-scroll"></i> Exams</a>
         </li>
         <li class="nav-item">
-          <a id="scheduale" class="nav-link" onclick="switchTab('scheduale')"><i class="fas fa-calendar"></i> Scheduale</a>
+          <a id="scheduale" class="nav-link" onclick="switchTab('scheduale')"><i class="fas fa-calendar"></i>
+            Scheduale</a>
         </li>
 
       </ul>
 
-      <button class="btn btn-outline-white btn-sm ml-auto" onclick="signOut()">Sign Out <i class="fas fa-sign-out-alt"></i></button>
+      <button class="btn btn-outline-white btn-sm ml-auto" onclick="signOut()">Sign Out <i
+          class="fas fa-sign-out-alt"></i></button>
     </div>
 
   </nav>
@@ -106,44 +111,53 @@
       <div id="pdf"></div>
     </div>
     <div id="exams_content">
-      
-      <div class="text-center">
-        <a href="" 
-          class="btn btn-default btn-rounded" 
-          data-toggle="modal" 
-          data-target="#orangeModalSubscription">
+
+      <div class="container" >
+        <!-- Grid row -->
+        <div class="row" id="exam_cards">
+        </div>
+        <!-- Grid row -->
+      </div>
+      <div id="add_exam_button">
+        <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#create_exam_modal">
           Add Exam <i class="fas fa-plus-square fa-lg"></i>
         </a>
       </div>
-      
-      <div class="modal fade" id="orangeModalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+
+      <div class="modal fade" id="create_exam_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-notify modal-warning" role="document">
+        <div class="modal-dialog modal-notify modal-info" role="document">
           <!--Content-->
           <div class="modal-content">
             <!--Header-->
             <div class="modal-header text-center">
-              <h4 class="modal-title white-text w-100 font-weight-bold py-2"><input type="text" class="form-control" placeholder="Exam Name"></h4>
+              <h4 class="modal-title w-100 white-text" id="myModalLabel">Create Exam</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true" class="white-text">&times;</span>
+                <h4></h4>
               </button>
             </div>
 
             <!--Body-->
-            <div class="modal-body" id="questions_container"></div>
-
-              <button class="btn btn-warning btn-block" onclick="addQuestionTemplate()">Add Qusestion <i class="fas fa-plus-square fa-lg"></i></button>
-              <input id="questions_count" type="hidden" value=0>
-
-            <!--Footer-->
-            <div class="modal-footer justify-content-center">
-              <a type="button" class="btn btn-outline-warning waves-effect">Send <i class="fas fa-paper-plane"></i></a>
+            <div class="modal-body" style="padding-bottom: 0;">
+              <form id="questions_container" class="needs-validation" novalidate>
+                <input required type="text" class="form-control" placeholder="Exam Name" id="exam_name"
+                  name="exan_name">
+                <hr class="info-color">
+              </form>
             </div>
+
+            <input id="questions_count" type="hidden" value=0>
           </div>
+
           <!--/.Content-->
         </div>
       </div>
+
     </div>
+
+
+
     <div id="scheduale_content">Scheduale</div>
   </main>
 
