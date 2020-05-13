@@ -89,7 +89,8 @@
             Textbooks</a>
         </li>
         <li class="nav-item">
-          <a id="exams" class="nav-link" onclick="switchTab('exams'); displayExams()"><i class="fas fa-scroll"></i> Exams</a>
+          <a id="exams" class="nav-link" onclick="switchTab('exams'); displayExams()"><i class="fas fa-scroll"></i>
+            Exams</a>
         </li>
         <li class="nav-item">
           <a id="scheduale" class="nav-link" onclick="switchTab('scheduale')"><i class="fas fa-calendar"></i>
@@ -112,7 +113,7 @@
     </div>
     <div id="exams_content">
 
-      <div class="container" >
+      <div class="container">
         <!-- Grid row -->
         <div class="row" id="exam_cards">
         </div>
@@ -154,11 +155,28 @@
         </div>
       </div>
 
-    </div>
+      <div class="modal fade" id="exam_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-info" role="document">
+          <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header text-center">
+              <h4 class="modal-title w-100 white-text" id="exam_title">Create Exam</h4>
+            </div>
+
+            <!--Body-->
+            <div class="modal-body" style="padding-bottom: 0;">
+              <form id="exam_container"   novalidate>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
 
 
 
-    <div id="scheduale_content">Scheduale</div>
+      <div id="scheduale_content">Scheduale</div>
   </main>
 
 

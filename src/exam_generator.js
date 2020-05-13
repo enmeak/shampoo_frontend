@@ -4,10 +4,9 @@ function displayExams() {
   const url = `http://localhost:5000/exams`;
   $.get(url, function (data, status) {
     data.forEach((element) => {
-      console.log(element.exam_name);
       let card = `
       <div class="col-lg-3">
-        <div class="card amber text-center z-depth-2">
+        <div class="card amber text-center z-depth-2" onclick="displayExamByID('${element._id}')">
           <div class="card-body hoverable ">
             <h3 class="text-uppercase font-weight-bold indigo-text mt-2 mb-3"><strong>${element.exam_name}</strong><i
                 class="far fa-heart ml-3"></i>
@@ -20,10 +19,39 @@ function displayExams() {
   });
 }
 
+// display exam by id
+function displayExamByID(exam_id) {
+  const url = `http://localhost:5000/exams/${exam_id}`;
+  // $("#exam_container").empty()
+  $.get(url, function (data, status) {
+    let exam = "";
+    data.questions.forEach((question) => {
+      exam += `<p>${question["question"]}</p>
+      <div>`;
+      for (let index = 0; index < 4; index++) {
+        let answer = question["answers"][index];
+        exam += `<div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" id="${answer._id}"
+        name="answer" value="${answer._id}">
+        <label class="custom-control-label" for="${answer._id}">${answer["answer"]}</label>
+        </div><br>`;
+      }
+      exam += `</div><hr class="info-color">`;
+      $("#exam_title").text(data.exam_name);
+    });
+    exam += `<!--Footer-->
+    <div class="modal-footer justify-content-center" id="submit_exam_button">
+      <input type="submit" class="btn btn-outline-info waves-effect" value='Submit'>
+    </div>`
+    
+    $("#exam_container").html(exam);
+    $("#exam_modal").modal("toggle");
+  });
+}
+
 addQuestionTemplate();
 function addQuestionTemplate() {
   const num = Number($("#questions_count").val()) + 1;
-
   let asamble_question = `<div class="md-form mb-5"><i class="fas fa-question prefix grey-text"></i>
     <input required type="text" id="form_${num}q" name="question" class="form-control">
     <small style="color: red; display: none">Please provide a valid question</small>
@@ -72,7 +100,7 @@ function addQuestionTemplate() {
 
   let submit_button = `<!--Footer-->
     <div class="modal-footer justify-content-center" id="submit_exam_button">
-      <input type="submit" class="btn btn-outline-info waves-effect" value='Send'>
+      <input type="submit" class="btn btn-outline-info waves-effect" value='Submit'>
     </div>`;
 
   let add_question_button = `<button id="add_question_button" class="btn btn-info btn-block" onclick="addQuestionTemplate()">Add Qusestion <i class="fas fa-plus-square fa-lg"></i></button>
