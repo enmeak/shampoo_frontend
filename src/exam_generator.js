@@ -42,13 +42,14 @@ function displayExamByID(exam_id) {
     exam += `<!--Footer-->
     <div class="modal-footer justify-content-center" id="submit_exam_button">
       <input type="submit" class="btn btn-outline-info waves-effect" value='Submit'>
-    </div>`
-    
+    </div>`;
+
     $("#exam_container").html(exam);
     $("#exam_modal").modal("toggle");
   });
 }
 
+// add questionTemplate for creating a new exam.
 addQuestionTemplate();
 function addQuestionTemplate() {
   const num = Number($("#questions_count").val()) + 1;
@@ -117,7 +118,6 @@ function addQuestionTemplate() {
 }
 
 //  trigger api to add exam on form submit
-
 (function () {
   "use strict";
   window.addEventListener(
@@ -185,4 +185,27 @@ function addQuestionTemplate() {
     },
     false
   );
+})();
+
+// TODO: function to submit
+(function () {
+  "use strict";
+  window.addEventListener("load", function () {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    let forms = document.getElementsByClassName("exam_validation");
+    // Loop over them and prevent submission
+    // var validation = Array.prototype.filter.call(forms, function (form) {
+    var validation = Array.prototype.filter.call(forms, function (form) {
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const exam_form = $("#exam_container");
+        const values = $(exam_form).serializeArray();
+        console.log(exam_form[0][2])
+        console.log(exam_form[0].getElementsByTagName("P")[0].outerText)
+        // const exam_name = values[0].value;
+        // console.log(exam_name)
+        let answers = [];
+      });
+    });
+  });
 })();
